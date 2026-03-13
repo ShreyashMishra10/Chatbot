@@ -30,16 +30,7 @@
             // const sender= props.sender;
             // const {message, sender}=props; -destucturing
 
-            /*
-            if(sender==='robot'){
-                return(
-                <div>
-                    <img src="robot.png" width="50" />
-                    {message}
-                </div>
-            )
-            }
-            */
+
             return(
                 <div>
                     {sender==='robot' && <img src="robot.png" width="50" />} 
@@ -49,14 +40,47 @@
             )
         }
 
+        function ChatMessages(){
+            const chatMessages=[{
+                message: "Hello Chatbot",
+                sender: "user",
+                id: "id1"
+            },{
+                message: "Hello! How can I help you?",
+                sender: "robot",
+                id: "id2"
+            },{
+                message: "can you get me todays date?",
+                sender: "user",
+                id: "id3"
+            },{
+                message: "Today is March 13",
+                sender: "robot",
+                id: "id4"
+            }
+            ]
+
+            return(<>
+            {chatMessages.map((chatMessage)=>{
+                return(
+                <ChatMessage
+                message = {chatMessage.message}
+                sender= {chatMessage.sender}
+                key= {chatMessage.id}
+                />
+            )
+            })}
+            </>
+        )
+        }
+
+
         function App(){
+
             return(
                 <>
            <ChatInput />
-           <ChatMessage message="Hello Chatbot" sender="user" />
-           <ChatMessage message="Hello! How can I help you?" sender="robot" />
-           <ChatMessage message="can you get me todays date?" sender="user" />
-           <ChatMessage message="Today is March 12" sender="robot" />
+           <ChatMessages />
         </>  
             );
         }
